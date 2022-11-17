@@ -22,6 +22,11 @@ public class KyleController : MonoBehaviour
     //Values are already normalized through the new Input System
     public void Move(InputAction.CallbackContext ctx)
     {
+        if (KyleInteractionAnimations.AnimationInProgress)
+        {
+            _movement = Vector2.zero;
+            return;
+        }
         _movement = ctx.ReadValue<Vector2>();
         _animator.SetFloat("Speed", _movement.sqrMagnitude == 0 ? 0 : 2);
     }
