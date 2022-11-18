@@ -6,18 +6,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public InteractionHelper ui;
     private PlayerInteractionAnim _anim;
+    private InteractionType _possibleInteraction = InteractionType.None;
 
     private void Start()
     {
         _anim = GetComponent<PlayerInteractionAnim>();
     }
 
+    public void SetInteraction(InteractionType interaction)
+    {
+        _possibleInteraction = interaction;
+        ui.Show();
+    }
+
     public void Interact(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
+        if (_possibleInteraction != InteractionType.None && ctx.started)
         {
-            _anim.PlayAnimation(KyleAnim.PushButton);
+            _anim.PlayAnimation(_possibleInteraction);
         }
     }
 }

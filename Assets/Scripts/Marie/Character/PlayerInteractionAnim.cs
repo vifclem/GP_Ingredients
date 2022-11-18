@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum KyleAnim
+public enum InteractionType
 {
+    None,
     OpenDoor,
     PushButton,
-    LockedDoor,
+    OpenChest,
     FailedAction
 }
 
@@ -31,23 +32,28 @@ public class PlayerInteractionAnim : MonoBehaviour
         AnimationInProgress = false;
     }
 
-    public bool PlayAnimation(KyleAnim animation)
+    public bool PlayAnimation(InteractionType animation)
     {
         //if an animation is already in progress or we are trying to do something while walking
         if (AnimationInProgress || _animator.GetFloat("Speed") > 1) return false;
         switch (animation)
         {
-            case KyleAnim.OpenDoor:
+            case InteractionType.OpenDoor:
             {
                 _animator.SetTrigger("Open Door");
                 break;
             }
-            case KyleAnim.PushButton:
+            case InteractionType.PushButton:
             {
                 _animator.SetTrigger("Push Button");
                 break;
             }
-            case KyleAnim.FailedAction:
+            case InteractionType.OpenChest:
+            {
+                _animator.SetTrigger("Push Button");
+                break;
+            }
+            case InteractionType.FailedAction:
             {
                 _animator.SetTrigger("Failed");
                 break;
