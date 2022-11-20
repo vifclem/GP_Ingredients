@@ -8,7 +8,8 @@ public enum InteractionType
     OpenDoor,
     PushButton,
     OpenChest,
-    FailedAction
+    FailedAction,
+    Pickup
 }
 
 public class PlayerInteractionAnim : MonoBehaviour
@@ -56,6 +57,11 @@ public class PlayerInteractionAnim : MonoBehaviour
             case InteractionType.FailedAction:
             {
                 _animator.SetTrigger("Failed");
+                break;
+            }
+            case InteractionType.Pickup:
+            {
+                _animator.SetTrigger("Pickup");
                 break;
             }
         }
