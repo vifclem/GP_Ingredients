@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Escape The Dungeon.unity
+    guid: 4eeb9ddab3a29844bb7f984ac3ed7423
   m_configObjects: {}

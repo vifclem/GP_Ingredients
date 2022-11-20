@@ -18,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     public void SetInteraction(InteractionType interaction)
     {
         _possibleInteraction = interaction;
-        ui.Show();
+        ui.Show(interaction!=InteractionType.None);
     }
 
     public void Interact(InputAction.CallbackContext ctx)
