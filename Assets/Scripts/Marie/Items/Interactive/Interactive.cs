@@ -6,7 +6,6 @@ public class Interactive : MonoBehaviour
 {
     public InteractionType interactionType = InteractionType.PushButton;
     
-    [SerializeField]private Animator triggeredAnimation;
     public bool onlyOnce = true;
 
     [Header("Condition")] 
@@ -18,8 +17,7 @@ public class Interactive : MonoBehaviour
     //virtual makes the function changeable in children classes
     public virtual void OnInteraction()
     {
-        triggeredAnimation.enabled = true;//("Interacted");
-        triggeredAnimation.SetTrigger("Interact");
+        Debug.LogWarning("This interaction has not been coded yet !");
     }
 
     

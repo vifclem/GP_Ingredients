@@ -1,6 +1,98 @@
 {
-    "name": "Kyle Input Controller",
+    "name": "Player Input Controller",
     "maps": [
+        {
+            "name": "Menu",
+            "id": "4470a4cd-5674-49aa-a3fe-8bfcb8acdd92",
+            "actions": [
+                {
+                    "name": "Switch",
+                    "type": "Button",
+                    "id": "1a1506cd-6f2d-468b-a73a-21deeb162fc8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Go",
+                    "type": "Button",
+                    "id": "a78bf29e-b907-40e5-a58f-21ce1908c4ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "63de42d1-be69-44ee-9a50-f046f6d0fbcb",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5573ce0-1658-4669-b6ba-cfdd117c6b76",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfffae2b-c3c2-4c18-9fa9-cc2898fa3ccc",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f976a0c1-55c6-4ba8-9687-c2da07e5bfab",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c4fda37a-c9bc-4494-841a-6f1575bf0f33",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Go",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4476749a-2b7d-4223-8f83-cf59d06b2564",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Go",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
         {
             "name": "Player",
             "id": "5d9dccc0-a606-4420-ae56-f0205abb89f4",

@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public InteractionHelper ui;
     private PlayerInteractionAnim _anim;
     private Inventory _inventory;
     private InteractionType _possibleInteraction = InteractionType.None;
@@ -23,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
     public void SetInteraction(InteractionType interaction)
     {
         _possibleInteraction = interaction;
-        ui.Show(interaction);
+        InteractionHelper.Instance.Show(interaction);
     }
 
     public void Interact(InputAction.CallbackContext ctx)

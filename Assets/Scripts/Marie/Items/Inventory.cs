@@ -1,39 +1,44 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<KeyItemData> _foundKeys;
+    public static Inventory Instance;
+    
+    private List<KeyItemData> _foundKeys = new List<KeyItemData>();
     [SerializeField] private List<KeyItem> usableItems;
     [SerializeField] private Transform hand;
 
     private int objectInHand = -1;
 
+    private void Start()
+    {
+        Instance = this;
+    }
 
+    public void RemoveFromInventory(KeyItemData keyItem)
+    {
+        if (_foundKeys.Contains(keyItem))
+        {
+            _foundKeys.Remove(keyItem);
+            int place = FindItemInList(keyItem.ID);
+            if (place != -1)
+            {
+                KeyItem key = usableItems[place];
+                usableItems.RemoveAt(place);
+                Destroy(key.gameObject);
+            }
+        }
+    }
     public void PickupKeyItem(KeyItemData keyItem)
     {
-        // int item = FindItemInList(keyItem.ID);
-        // if (item == -1)
-        // {
-        //     Debug.LogError("Wrong item ID : "+keyItem.ID+" is not an object from the list");
-        // }
-        // else
-        // {
-        //     if (objectInHand != -1)
-        //     {
-        //         usableItems[objectInHand].gameObject.SetActive(false);
-        //     }
-        //     _foundItems.Add(keyItem);
-        //     objectInHand = item;
-        //     usableItems[objectInHand].gameObject.SetActive(true);
-        // }
-        
         if (!_foundKeys.Contains(keyItem))
         {
-            KeyItem keyInstance = Instantiate<KeyItem>(keyItem.prefab, hand);
+            GameObject keyInstance = Instantiate(keyItem.prefab, hand);
             _foundKeys.Add(keyItem);
-            usableItems.Add(keyInstance);
+            usableItems.Add(keyInstance.GetComponent<KeyItem>());
             //Utilise le dernier trouvé
             HoldItem(usableItems.Count-1);
         }

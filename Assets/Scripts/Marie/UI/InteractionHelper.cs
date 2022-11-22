@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,8 +6,16 @@ using UnityEngine;
 
 public class InteractionHelper : MonoBehaviour
 {
+    public static InteractionHelper Instance;
+    
     public GameObject interactionCue;
     public string interactionText, pickupText, failedText;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void Show(InteractionType interaction = InteractionType.None)
     {
         if (interaction != InteractionType.None)

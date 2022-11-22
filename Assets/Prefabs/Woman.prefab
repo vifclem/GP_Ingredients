@@ -1442,7 +1442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a76a440673446869620b0bf6ba08bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
 --- !u!114 &5827981051850980578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,7 +1557,7 @@ MonoBehaviour:
   usableItems:
   - {fileID: 0}
   - {fileID: 0}
-  holdingHand: {fileID: 601579305468787935}
+  hand: {fileID: 0}
 --- !u!54 &5827981051850980579
 Rigidbody:
   m_ObjectHideFlags: 0
