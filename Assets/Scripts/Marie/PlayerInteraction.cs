@@ -44,14 +44,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Pickup()
     {
-        _inventory.PickupKeyItem(_possiblePickable.ID);
+        _inventory.PickupKeyItem(_possiblePickable.data);
         _possiblePickable.gameObject.SetActive(false);
         SetInteraction(InteractionType.None);
     }
 
     private void Interact()
     {
-        if (_inventory.IsItemFound(_possibleInteractive.requiredItemId))
+        if (_inventory.IsItemFound(_possibleInteractive.requiredItem))
         {
             _possibleInteractive.OnInteraction();
             if (_possibleInteractive.onlyOnce)
@@ -79,7 +79,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Interactive interactive = other.GetComponent<Interactive>();
                 //if interaction doesn't need key object or interaction key object is in inventory
-                bool hasRequiredItem = _inventory.IsItemFound(interactive.requiredItemId);
+                bool hasRequiredItem = _inventory.IsItemFound(interactive.requiredItem);
                 if (!interactive.waitForObject || hasRequiredItem)
                 {
                     _possibleInteractive = interactive;

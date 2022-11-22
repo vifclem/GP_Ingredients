@@ -10,7 +10,7 @@ public class Interactive : MonoBehaviour
     public bool onlyOnce = true;
 
     [Header("Condition")] 
-    public string requiredItemId;
+    public KeyItemData requiredItem;
 
     public bool waitForObject;
     

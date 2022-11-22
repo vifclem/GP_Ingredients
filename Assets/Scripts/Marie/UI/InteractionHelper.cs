@@ -20,8 +20,7 @@ public class InteractionHelper : MonoBehaviour
             {
                 interactionCue.GetComponentInChildren<TextMeshProUGUI>().text = failedText;
             }else{
-
-            interactionCue.GetComponentInChildren<TextMeshProUGUI>().text = interactionText;
+                interactionCue.GetComponentInChildren<TextMeshProUGUI>().text = interactionText;
             }
         }
         else

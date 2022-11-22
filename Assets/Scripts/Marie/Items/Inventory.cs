@@ -1,33 +1,41 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<string> _foundItems = new List<string>();
+    private List<KeyItemData> _foundKeys;
     [SerializeField] private List<KeyItem> usableItems;
-    [SerializeField] private GameObject holdingHand;
+    [SerializeField] private Transform hand;
 
     private int objectInHand = -1;
 
 
-    public void PickupKeyItem(string id)
+    public void PickupKeyItem(KeyItemData keyItem)
     {
-        int item = FindItemInList(id);
-        if (item == -1)
+        // int item = FindItemInList(keyItem.ID);
+        // if (item == -1)
+        // {
+        //     Debug.LogError("Wrong item ID : "+keyItem.ID+" is not an object from the list");
+        // }
+        // else
+        // {
+        //     if (objectInHand != -1)
+        //     {
+        //         usableItems[objectInHand].gameObject.SetActive(false);
+        //     }
+        //     _foundItems.Add(keyItem);
+        //     objectInHand = item;
+        //     usableItems[objectInHand].gameObject.SetActive(true);
+        // }
+        
+        if (!_foundKeys.Contains(keyItem))
         {
-            Debug.LogError("Wrong item ID : "+id+" is not an object from the list");
-        }
-        else
-        {
-            if (objectInHand != -1)
-            {
-                usableItems[objectInHand].gameObject.SetActive(false);
-            }
-            _foundItems.Add(id);
-            objectInHand = item;
-            usableItems[objectInHand].gameObject.SetActive(true);
+            KeyItem keyInstance = Instantiate<KeyItem>(keyItem.prefab, hand);
+            _foundKeys.Add(keyItem);
+            usableItems.Add(keyInstance);
+            //Utilise le dernier trouvé
+            HoldItem(usableItems.Count-1);
         }
     }
 
@@ -35,7 +43,7 @@ public class Inventory : MonoBehaviour
     {
         for (int item = 0; item < usableItems.Count; item++)
         {
-            if (usableItems[item].GetComponent<KeyItem>().ID == id)
+            if (usableItems[item].GetComponent<KeyItem>().data.ID == id)
             {
                 return item;
             }
@@ -65,17 +73,17 @@ public class Inventory : MonoBehaviour
 
     public void NextItem()
     {
-        if (_foundItems.Count != 0)
+        if (usableItems.Count != 0)
         {
-            int next = (objectInHand+1)-1;
-            
+            int next = ((objectInHand+1)%usableItems.Count)-1;
+            HoldItem(next);
         }
     }
 
-    public bool IsItemFound(string id)
+    public bool IsItemFound(KeyItemData key)
     {
         //Empty ID means no necessary key item
-        //true if the string is found in the list, false otherwise
-        return id=="" || _foundItems.Contains(id);
+        //true if the id is found in the list, false otherwise
+        return key==null|| _foundKeys.Contains(key);
     }
 }

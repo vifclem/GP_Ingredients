@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class KeyItem : MonoBehaviour
 {
-    public string ID;
+    public KeyItemData data;
     
 }
