@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class WallTorch : Interactive
@@ -7,6 +6,7 @@ public class WallTorch : Interactive
 
     public static int litTorchesCount = 0;
     public GameObject chest;
+    public Animator animator;
 
     public override void OnInteraction()
     {
@@ -16,10 +16,17 @@ public class WallTorch : Interactive
         transform.GetChild(0).gameObject.SetActive(true);
         transform.GetChild(1).gameObject.SetActive(true);
         litTorchesCount++;
+
         if(litTorchesCount == 3)
         {
             //spawn chest
             chest.SetActive(true);
+            
+
+
+
+
         }
+
     }
 }
