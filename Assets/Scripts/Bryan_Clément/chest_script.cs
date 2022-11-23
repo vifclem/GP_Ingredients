@@ -1,17 +1,28 @@
 
 using UnityEngine;
+using UnityEngine.Events;
 
-public class chest_script : MonoBehaviour
+public class chest_script : Interactive
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator anim;
+    public GameObject KeyInteraction;
+    public bool isOpen;
+
+
+    public override void OnInteraction()
     {
-        
+        if (!isOpen)
+        {
+            isOpen = true;
+            Debug.Log("Chest is open");
+            anim.SetBool("isOpen", isOpen);
+            KeyInteraction.SetActive(true);
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+
 }
+        
+  
