@@ -15,7 +15,7 @@ public class chest_script : Interactive
         {
             isOpen = true;
             Debug.Log("Chest is open");
-            anim.SetBool("isOpen", isOpen);
+            anim.enabled = true;
             KeyInteraction.SetActive(true);
             gameObject.SetActive(false);
         }

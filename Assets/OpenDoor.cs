@@ -8,6 +8,8 @@ public class OpenDoor : Interactive
 
     public override void OnInteraction()
     {
+       Inventory.Instance.RemoveFromInventory(requiredItem);
+
         anim.enabled = true;
     }
 }
