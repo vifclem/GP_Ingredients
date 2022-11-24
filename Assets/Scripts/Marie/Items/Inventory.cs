@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour
     {
         if (!_foundKeys.Contains(keyItem))
         {
+            Debug.Log("Pick up " + keyItem);
             GameObject keyInstance = Instantiate(keyItem.prefab, hand);
             _foundKeys.Add(keyItem);
             usableItems.Add(keyInstance.GetComponent<KeyItem>());
